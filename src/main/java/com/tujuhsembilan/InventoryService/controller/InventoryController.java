@@ -3,13 +3,14 @@ package com.tujuhsembilan.InventoryService.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tujuhsembilan.InventoryService.dto.CategoryRequest;
 import com.tujuhsembilan.InventoryService.dto.ProductCreateRequest;
@@ -19,7 +20,8 @@ import com.tujuhsembilan.InventoryService.dto.SuppliersRequest;
 import com.tujuhsembilan.InventoryService.service.IinventoryService;
 import com.tujuhsembilan.util.ResponseHandler;
 
-@Controller
+@RestController
+@RequestMapping("")
 public class InventoryController {
     
     @Autowired
