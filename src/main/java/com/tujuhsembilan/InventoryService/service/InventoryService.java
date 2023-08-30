@@ -50,7 +50,7 @@ public class InventoryService implements IinventoryService {
 
     @Override
     public void createCategory(CategoryRequest categoryRequest) {
-        Optional<Categories> categories = categoriesRepository.findByCategoryName(categoryRequest.getCategoryName());
+        Optional<Categories> categories = categoriesRepository.findByCategoryNameIgnoreCase(categoryRequest.getCategoryName());
         if (categories.isPresent()) {
             throw new RuntimeException("Categories is already exist");
         }
@@ -270,15 +270,16 @@ public class InventoryService implements IinventoryService {
 
     @Override
     public void updateCategory(Integer id, CategoryRequest categoryRequest) {
-        Optional<Categories> category = categoriesRepository.findByCategoryName(categoryRequest.getCategoryName());
-        if (category.isPresent() && (category.get().getCategoryId() == id)) {
-            category.ifPresent(c -> {
+        Optional<Categories> category = categoriesRepository.findByCategoryNameIgnoreCase(categoryRequest.getCategoryName());
+        if(category.isPresent() && (category.get().getCategoryId() != id)){
+            throw new RuntimeException("Categories is already exist");
+        }else{
+            Optional<Categories> category1 = categoriesRepository.findById(id);
+            category1.ifPresent(c -> {
                 c.setCategoryName(categoryRequest.getCategoryName());
                 c.setDescription(categoryRequest.getDescription());
                 categoriesRepository.save(c);
             });
-        } else {
-            throw new RuntimeException("Categories is already exist");
         }
     }
 

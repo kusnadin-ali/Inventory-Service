@@ -52,7 +52,7 @@ public class InventoryController {
     public ResponseEntity<Object> updateCategory(@PathVariable("id") Integer id, @RequestBody CategoryRequest categoryRequest){
         try {
             inventoryService.updateCategory(id,categoryRequest);
-            return ResponseHandler.generateResponse("Update Category Success", HttpStatus.NO_CONTENT);
+            return ResponseHandler.generateResponse("Update Category Success", HttpStatus.OK);
         } catch (RuntimeException  e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class InventoryController {
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<Object> deleteCategory(@PathVariable("id") Integer id){
         inventoryService.deleteCategory(id);
-        return ResponseHandler.generateResponse("Delete Category By Id Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Delete Category By Id Success", HttpStatus.OK);
     }
 
     @PostMapping("/products/create")
@@ -86,19 +86,19 @@ public class InventoryController {
     @PutMapping("/products/{id}")
     public ResponseEntity<Object> updateProducts(@PathVariable("id") Integer id, @RequestBody ProductsUpdateRequest request){
         inventoryService.updateProduct(id, request);
-        return ResponseHandler.generateResponse("Update products By Id Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Update products By Id Success", HttpStatus.OK);
     }
 
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Object> deleteProducts(@PathVariable("id") Integer id){
         inventoryService.deleteProduct(id);
-        return ResponseHandler.generateResponse("Delete Products By Id Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Delete Products By Id Success", HttpStatus.OK);
     }
 
     @PutMapping("/products/stock/{productId}")
     public ResponseEntity<Object> updateStock(@PathVariable("productId") Integer productId, @RequestBody StockRequest request){
         inventoryService.updateStockProduct(productId, request);
-        return ResponseHandler.generateResponse("Update Stock products By Id Products Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Update Stock products By Id Products Success", HttpStatus.OK);
     }
 
     @GetMapping("/products/stock/{productId}")
@@ -130,13 +130,13 @@ public class InventoryController {
     @PutMapping("/suppliers/{id}")
     public ResponseEntity<Object> updateSuppliers(@PathVariable("id") Integer id, @RequestBody SuppliersRequest request){
         inventoryService.updateSuppliers(id, request);
-        return ResponseHandler.generateResponse("Update Supplier By Id Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Update Supplier By Id Success", HttpStatus.OK);
     }
 
     @DeleteMapping("/suppliers/{id}")
     public ResponseEntity<Object> deleteSuppliers(@PathVariable("id") Integer id){
         inventoryService.deleteSuppliers(id);
-        return ResponseHandler.generateResponse("Delete Supplier By Id Success", HttpStatus.NO_CONTENT);
+        return ResponseHandler.generateResponse("Delete Supplier By Id Success", HttpStatus.OK);
     }
 
     @GetMapping("/suppliers/product/{suppliersId}")

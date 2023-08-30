@@ -9,5 +9,5 @@ import com.tujuhsembilan.InventoryService.model.Categories;
 
 @Repository
 public interface CategoriesRepository extends JpaRepository<Categories, Integer>{
-    Optional<Categories> findByCategoryName(String categoryName);
+    Optional<Categories> findByCategoryNameIgnoreCase(String categoryName);
 }
