@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  ## Datasource
+  datasource:
+    url: jdbc:postgresql://localhost:5432/OnlineShop  
+    username: postgres  
+    password: pass12
+    driver-class-name: org.postgresql.Driver
+  ## Configuration
+  jpa:
+    # database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      # COMMENT OUT OR CHANGE TO VALIDATE ON PRODUCTION
+      ddl-auto: validate
+
+--- ## Development
+spring:
+  config:
+    activate:
+      on-profile: "development"
+
+--- # Miscellanous
+#-----------------------------------
+spring:
+  output:
+    ansi:
+      enabled: always
